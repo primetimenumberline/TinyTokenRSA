@@ -1,5 +1,5 @@
 ﻿//List of accepted characters for a potential input message
-char[] charMap = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+char[] charMap = new char[] { ' ','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 
 //Select your favourite pair of prime numbers
 int p = 7;
@@ -13,7 +13,7 @@ Console.WriteLine("n: " + n + "\nphi: " + phi + "\n");
 
 //Select an e and compute the d
 int e = selectE(phi);
-int d = modInverse(e, phi); ;
+int d = modInverse(e, phi);
 Console.WriteLine("e: " + e + "\nd: " + d + "\n");
 
 //Prompt user for input message to encrypt
@@ -72,7 +72,7 @@ for (int i = 0; i < cipherArrayInt.Length; i++)
 decryptedEncoding = decryptedEncoding.Substring(0, decryptedEncoding.Length - 1);
 Console.WriteLine("\nDecrypted mapping: " + decryptedEncoding);
 
-//Build the output string by removing delimiters
+//Build the output string by removing delimiters and doing a lookup against original charMap
 string textDecrypted = "";
 string[] decryptedSymbol = decryptedEncoding.Split('-');
 for (int i = 0; i < decryptedSymbol.Length; i++)
@@ -98,7 +98,6 @@ int gcd(int a, int b)
     if (a == 0) return b;
     return gcd(b % a, a);
 }
-
 //Compute d as the inverse of e modulo phi(n), aka e*d mod phi(n) = 1
 int modInverse(int e, int phi)
 {
